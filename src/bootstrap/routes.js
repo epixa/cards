@@ -72,6 +72,6 @@ module.exports = function(App, server){
             return;
         }
 
-        response.render('room', {room: request.params.name});
+        response.render('room');
     });
 };

@@ -1,16 +1,4 @@
-
-<script src="/assets/js/jquery.js"></script>
-<script src="/assets/js/underscore.js"></script>
-<script src="/assets/js/backbone.js"></script>
-<script src="/assets/js/require.js"></script>
-
+<script src="/js/libraries/underscore/underscore.js"></script>
+<script src="/js/libraries/backbone/backbone.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-
-<script type="text/javascript">
-require.config({ baseUrl: '/src' });
-$(document).ready(function(){
-    require(["controller/room"], function(dispatch) {
-        dispatch('<%= room %>');
-    });
-});
-</script>
+<script data-main="/js/main" src="/js/libraries/require/require.js"></script>

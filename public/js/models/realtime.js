@@ -8,8 +8,9 @@
  * to handle any changes that are synchronized.
  */
 define([
+    'backbone',
     'app'
-], function(App){
+], function(Backbone, App){
     var callback = function(error, data, options){
         if (error) {
             options['error'](error);
