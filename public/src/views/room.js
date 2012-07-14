@@ -1,16 +1,23 @@
-define(function(){
-    var View = Backbone.View.extend({
-        id: 'room',
+/**
+ * Handles presentation logic for a room model
+ *
+ * Whenever the room details change, the view is re-rendered.
+ */
+define([
+    'views/players'
+], function(PlayersView){
+    return Backbone.View.extend({
+        views: {},
 
-        template: _.template($('#room-template').html()),
-
-        events: {},
+        initialize: function(){
+            this.model.on('change', this.render, this);
+            this.views.players = new PlayersView({collection: this.model.players});
+            this.views.players.el = this.$('#players');
+        },
 
         render: function(){
-            $(this.el).html(this.template(this.model.toJSON()));
+            console.log('RoomView.render', this.model);
             return this;
         }
     });
-
-    return View;
 });
