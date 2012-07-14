@@ -19,7 +19,7 @@ module.exports = function(App){
         Model: Model,
         SyncCollection: {
             read: function(params, callback){
-                Model.find(params).run(function(error, players){
+                Model.find(params).exec(function(error, players){
                     if (error) {
                         return callback(App.createError('FATAL', 'QUERY_ERROR', error));
                     }
