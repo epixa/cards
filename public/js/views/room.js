@@ -4,8 +4,9 @@
  * Whenever the room details change, the view is re-rendered.
  */
 define([
+    'backbone',
     'views/players'
-], function(PlayersView){
+], function(Backbone, PlayersView){
     return Backbone.View.extend({
         views: {},
 
