@@ -6,7 +6,8 @@
  */
 
 var io = require('socket.io');
-var connect = require('connect');
+var express = require('express');
+var connect = require('express/node_modules/connect');
 var util = require('underscore');
 
 /**
@@ -35,7 +36,7 @@ module.exports = function(App, server){
                 if (error || !session) {
                     accept('Failed to read session information', false);
                 } else {
-                    data.session = new connect.middleware.session.Session(data, session);
+                    data.session = new express.session.Session(data, session);
                     accept(null, true);
                 }
             });
