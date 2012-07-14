@@ -4,7 +4,9 @@
  * Whenever a new player is added or removed to the collection, the entire
  * template is re-rendered.
  */
-define(function(){
+define([
+    'backbone'
+], function(Backbone){
     return Backbone.View.extend({
         initialize: function(){
             this.collection.on('reset', this.render, this);
