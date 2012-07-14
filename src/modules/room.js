@@ -13,7 +13,7 @@ module.exports = function(App){
         Model: Model,
         SyncModel: {
             read: function(params, callback){
-                Model.findOne(params).populate('game').run(function(error, room){
+                Model.findOne(params).populate('game').exec(function(error, room){
                     if (error) {
                         return callback(App.createError('FATAL', 'QUERY_ERROR', error));
                     } else if (!room) {
