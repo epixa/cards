@@ -5,8 +5,9 @@
  * template is re-rendered.
  */
 define([
-    'backbone'
-], function(Backbone){
+    'backbone',
+    'text!templates/players.html'
+], function(Backbone, template){
     return Backbone.View.extend({
         initialize: function(){
             this.collection.on('reset', this.render, this);
@@ -15,7 +16,8 @@ define([
         },
 
         render: function(){
-            console.log('PlayersView.render', this.collection);
+            var compiledTemplate = _.template(template, {players: this.collection});
+            this.$el.html(compiledTemplate);
             return this;
         }
     });
