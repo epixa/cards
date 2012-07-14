@@ -5,19 +5,19 @@
  */
 define([
     'backbone',
-    'views/players'
-], function(Backbone, PlayersView){
+    'views/players',
+    'text!templates/room.html'
+], function(Backbone, PlayersView, template){
     return Backbone.View.extend({
-        views: {},
-
         initialize: function(){
             this.model.on('change', this.render, this);
-            this.views.players = new PlayersView({collection: this.model.players});
-            this.views.players.el = this.$('#players');
         },
 
         render: function(){
-            console.log('RoomView.render', this.model);
+            var compiledTemplate = _.template(template, {room: this.model});
+            this.$el.html(compiledTemplate);
+
+            new PlayersView({collection: this.model.players, el: this.$('#players')});
             return this;
         }
     });
