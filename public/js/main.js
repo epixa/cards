@@ -25,7 +25,7 @@ define([
         App.socket.on('error', App.error);
 
         App.socket.on('connect', function(){
-            var view = new RoomView({model: new Room.Model(), el: $('body')});
+            var view = new RoomView({model: new Room(), el: $('body')});
             view.model.fetch({
                 name: name,
                 success: function(room){
