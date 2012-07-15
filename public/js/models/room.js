@@ -1,5 +1,5 @@
 /**
- * The game room module
+ * The game room
  *
  * Game rooms are the unique endpoints that you use to play games with a group
  * friends. The game that is currently being played within a room can be
@@ -11,23 +11,11 @@
 define([
     'app',
     'models/realtime',
-    'models/player'
-], function(App, Realtime, Player){
-    var context = 'Room';
-
-    var Model = Realtime.Model.extend({
-        context: context,
+    'collections/player'
+], function(App, RealtimeModel, Players){
+    return RealtimeModel.extend({
+        context: 'Room',
         idAttribute: '_id',
-        players: new Player.Collection()
+        players: new Players()
     });
-
-    var Collection = Realtime.Collection.extend({
-        context: context,
-        model: Model
-    });
-
-    return {
-        Model: Model,
-        Collection: Collection
-    };
 });
